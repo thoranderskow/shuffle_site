@@ -45,10 +45,6 @@ export function search_hand(hand) {
         curr += 1;
         update[k + '/count'] = {matched: curr};
         hands.update(update);
-        total_matches.once('value').then(function(snapshot) {
-          let x = snapshot.val()['matches'];
-          total_matches.child('matches').set(x+1);
-        })
         totals.once('value').then(function(snapshot) {
           let x = snapshot.val()['total_matches'];
           totals.child('total_matches').set(x+1);

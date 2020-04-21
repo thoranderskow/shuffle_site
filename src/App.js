@@ -26,7 +26,7 @@ class App extends Component {
     let _this = this;
     e.preventDefault(); // <- prevent form submit from reloading the page
     /* Create hand, just an array of integers */
-    let arr = [1,2,3,4,5];
+    let arr = shuffle();
     /* look for match in database and push arr */
     search_hand(arr);
     let imgs = map_cards(arr);
@@ -50,8 +50,14 @@ class App extends Component {
       <div>
           <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style={{height: '10vh'}}>
               <h1 class="card-title" style={{color: 'white'}}>Shuffle-o</h1>
-              Total Hands Shuffled: {this.state.total}
-              Total Matches Found: {this.state.total_matches}
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#">Unique Hands Shuffled: {this.state.total} <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#">Total Matches Found: {this.state.total_matches}<span class="sr-only">(current)</span></a>
+                  </li>
+              </ul>
           </nav>
           <div id='show_cards'>
               {this.state.hand.map(image => (
